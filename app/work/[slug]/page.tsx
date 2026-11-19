@@ -85,7 +85,7 @@ function ProjectHeader({ project }: { project: Project }) {
         </p>
 
         <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
-          {formatIndex(index)} / {formatIndex(totalProjects - 1)}
+          Karya {formatIndex(index)} / {formatIndex(totalProjects - 1)}
         </p>
       </div>
 
@@ -149,6 +149,18 @@ export default async function WorkPage({ params }: PageProps<"/work/[slug]">) {
 
       <div className="border-y border-line bg-paper-deep">
         <div className="mx-auto max-w-[1600px] sm:px-8 sm:py-8">
+          {/* Keterangan ditaruh sebelum gambar: pada lembar gabungan, pembaca
+              perlu tahu karya mana yang sedang dilihat sebelum matanya
+              menyapu seluruh halaman arsip. */}
+          {project.sheetNote && (
+            <p className="px-5 pt-5 pb-3 text-[12px] leading-relaxed text-ink-soft sm:px-0 sm:pt-0 sm:pb-4">
+              <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-ink">
+                Lembar arsip gabungan
+              </span>
+              <span className="mt-1 block">{project.sheetNote}</span>
+            </p>
+          )}
+
           <Image
             src={project.sheet.src}
             alt={project.sheet.alt}
@@ -160,11 +172,7 @@ export default async function WorkPage({ params }: PageProps<"/work/[slug]">) {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <p className="py-4 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
-          {project.sheetNote ?? `${project.title} — halaman lengkap`}
-        </p>
-
+      <div className="mx-auto max-w-[1440px] px-5 pt-10 sm:px-8">
         <Link
           href={`/work/${next.slug}`}
           className="group grid items-end gap-6 border-t border-line py-10 md:grid-cols-12 lg:py-14"

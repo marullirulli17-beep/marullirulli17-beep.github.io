@@ -1,21 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  categories,
-  formatIndex,
-  totalProjects,
-  type Project,
-} from "@/lib/projects";
-
-/** Nomor indeks bersama, mis. "03 / 10". */
-function IndexTag({ index }: { index: number }) {
-  return (
-    <span className="font-mono text-[10px] tracking-[0.14em] text-ink-soft">
-      {formatIndex(index)} / {formatIndex(totalProjects - 1)}
-    </span>
-  );
-}
+import { categories, type Project } from "@/lib/projects";
 
 /** Label kategori dengan kotak warna aksen. */
 function CategoryTag({ project }: { project: Project }) {
@@ -35,10 +21,9 @@ function CategoryTag({ project }: { project: Project }) {
 
 type WorkCardProps = {
   project: Project;
-  index: number;
 };
 
-export function WorkCard({ project, index }: WorkCardProps) {
+export function WorkCard({ project }: WorkCardProps) {
   const category = categories[project.category];
 
   return (
@@ -72,12 +57,9 @@ export function WorkCard({ project, index }: WorkCardProps) {
       </div>
 
       <div className="mt-3">
-        <div className="flex items-baseline justify-between gap-3">
-          <h3 className="text-[16px] leading-snug font-semibold tracking-tight text-pretty">
-            {project.title}
-          </h3>
-          <IndexTag index={index} />
-        </div>
+        <h3 className="text-[16px] leading-snug font-semibold tracking-tight text-pretty">
+          {project.title}
+        </h3>
 
         <p className="mt-1 text-[13px] leading-relaxed text-ink-soft">
           {project.client ?? project.summary}
@@ -95,7 +77,7 @@ export function WorkCard({ project, index }: WorkCardProps) {
  * Karya pembuka: gambar lebar dengan kolom keterangan di sampingnya.
  * Rasio gambar dijaga apa adanya supaya tidak terpotong.
  */
-export function LeadWork({ project, index }: WorkCardProps) {
+export function LeadWork({ project }: WorkCardProps) {
   const category = categories[project.category];
 
   return (
@@ -119,10 +101,7 @@ export function LeadWork({ project, index }: WorkCardProps) {
 
       <div className="flex flex-col justify-between gap-6 lg:col-span-4 lg:border-l lg:border-line lg:pl-8">
         <div>
-          <div className="flex items-center justify-between gap-3">
-            <CategoryTag project={project} />
-            <IndexTag index={index} />
-          </div>
+          <CategoryTag project={project} />
 
           <h3 className="display mt-4 text-[clamp(1.5rem,3vw,2.35rem)]">
             <Link

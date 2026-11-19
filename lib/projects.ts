@@ -253,7 +253,7 @@ export const projects: Project[] = [
       alt: "Lembar portofolio gabungan: desain web Footwear di sisi kanan, bersama poster Bali dan storyboard iklan di sisi kiri.",
     },
     sheetNote:
-      "Halaman portofolio asli — desain web Footwear ada di sisi kanan; sisi kiri memuat karya klien lain dari periode yang sama.",
+      "Desain web Footwear ada di sisi kanan; sisi kiri memuat karya klien lain dari periode yang sama.",
   },
   {
     slug: "bali-travel",
@@ -275,7 +275,7 @@ export const projects: Project[] = [
       alt: "Lembar portofolio gabungan: poster Bali dan storyboard iklan di sisi kiri, bersama desain web Footwear di sisi kanan.",
     },
     sheetNote:
-      "Halaman portofolio asli — kampanye Bali ada di sisi kiri; sisi kanan memuat karya klien lain dari periode yang sama.",
+      "Kampanye Bali ada di sisi kiri; sisi kanan memuat karya klien lain dari periode yang sama.",
   },
   {
     slug: "local-geniuz",
@@ -298,7 +298,7 @@ export const projects: Project[] = [
       alt: "Lembar portofolio gabungan: logo Local Geniuz di baris bawah, bersama merchandise dan kemasan klien lain.",
     },
     sheetNote:
-      "Halaman portofolio asli — logo Local Geniuz ada di baris bawah; halaman ini juga memuat karya klien lain.",
+      "Logo Local Geniuz ada di baris bawah; halaman ini juga memuat karya klien lain.",
   },
   {
     slug: "herbal-1999",
@@ -321,7 +321,7 @@ export const projects: Project[] = [
       alt: "Lembar portofolio gabungan: label Herbal 1999 di sisi kanan, bersama merchandise dan kemasan klien lain.",
     },
     sheetNote:
-      "Halaman portofolio asli — label Herbal 1999 ada di sisi kanan; halaman ini juga memuat karya klien lain.",
+      "Label Herbal 1999 ada di sisi kanan; halaman ini juga memuat karya klien lain.",
   },
 ];
 

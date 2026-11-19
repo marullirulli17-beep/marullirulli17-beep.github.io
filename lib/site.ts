@@ -62,7 +62,7 @@ function whatsappHref(number: string): string {
 
 const email = "marulli.rulli17@gmail.com";
 const whatsapp = "+62 858-1307-9193";
-const instagram = "";
+const instagram = "https://www.instagram.com/marullimuhammad/";
 const linkedin = "";
 const behance = "";
 

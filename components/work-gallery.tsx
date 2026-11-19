@@ -87,7 +87,7 @@ export function WorkGallery() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <LeadWork project={lead} index={projects.indexOf(lead)} />
+          <LeadWork project={lead} />
         </motion.div>
       )}
 
@@ -100,7 +100,7 @@ export function WorkGallery() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            <WorkCard project={project} index={projects.indexOf(project)} />
+            <WorkCard project={project} />
           </motion.div>
         ))}
       </div>

@@ -70,10 +70,9 @@ export function Hero() {
                 sizes="(max-width: 1024px) 360px, 360px"
                 className="h-auto w-full mix-blend-multiply"
               />
-              <div className="mt-3 flex items-center justify-between gap-3 border-t border-line pt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
-                <span>{site.role}</span>
-                <span aria-hidden>01 / {totalProjects}</span>
-              </div>
+              <p className="mt-3 border-t border-line pt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
+                {site.role}
+              </p>
             </div>
           </div>
         </div>
