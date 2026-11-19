@@ -162,7 +162,7 @@ export default async function WorkPage({ params }: PageProps<"/work/[slug]">) {
 
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
         <p className="py-4 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
-          {project.title} — halaman lengkap
+          {project.sheetNote ?? `${project.title} — halaman lengkap`}
         </p>
 
         <Link

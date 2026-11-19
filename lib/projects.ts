@@ -34,12 +34,21 @@ export type Project = {
   deliverables: string[];
   cover: ProjectImage;
   sheet: ProjectImage;
+  /**
+   * Keterangan di bawah lembar. Dipakai saat lembar adalah halaman portofolio
+   * asli yang juga memuat karya klien lain, supaya keterangannya tidak
+   * mengklaim seluruh halaman sebagai milik satu proyek.
+   */
+  sheetNote?: string;
 };
 
 export const categories: Record<CategoryId, Category> = {
   "social-media": {
     label: "Social Media",
-    accent: "#DB2227",
+    // #DB2227 hanya mencapai 4,48:1 terhadap kertas, tepat di bawah ambang
+    // WCAG AA untuk teks kecil. Digelapkan 2% agar label 10px di atasnya lolos
+    // (4,65:1) tanpa mengubah kesan warna aslinya.
+    accent: "#D71F24",
     onAccent: "#F7F4EE",
   },
   promotional: {
@@ -241,8 +250,10 @@ export const projects: Project[] = [
     sheet: {
       src: "/images/projects/digital-design/footwear-web/sheet.webp",
       ...SHEET,
-      alt: "Lembar portofolio lengkap berisi desain web Footwear.",
+      alt: "Lembar portofolio gabungan: desain web Footwear di sisi kanan, bersama poster Bali dan storyboard iklan di sisi kiri.",
     },
+    sheetNote:
+      "Halaman portofolio asli — desain web Footwear ada di sisi kanan; sisi kiri memuat karya klien lain dari periode yang sama.",
   },
   {
     slug: "bali-travel",
@@ -261,8 +272,10 @@ export const projects: Project[] = [
     sheet: {
       src: "/images/projects/promotional/bali-travel/sheet.webp",
       ...SHEET,
-      alt: "Lembar portofolio lengkap berisi poster perjalanan Bali.",
+      alt: "Lembar portofolio gabungan: poster Bali dan storyboard iklan di sisi kiri, bersama desain web Footwear di sisi kanan.",
     },
+    sheetNote:
+      "Halaman portofolio asli — kampanye Bali ada di sisi kiri; sisi kanan memuat karya klien lain dari periode yang sama.",
   },
   {
     slug: "local-geniuz",
@@ -282,8 +295,10 @@ export const projects: Project[] = [
     sheet: {
       src: "/images/projects/branding/local-geniuz/sheet.webp",
       ...SHEET,
-      alt: "Lembar portofolio lengkap berisi logo dan merchandise Local Geniuz.",
+      alt: "Lembar portofolio gabungan: logo Local Geniuz di baris bawah, bersama merchandise dan kemasan klien lain.",
     },
+    sheetNote:
+      "Halaman portofolio asli — logo Local Geniuz ada di baris bawah; halaman ini juga memuat karya klien lain.",
   },
   {
     slug: "herbal-1999",
@@ -303,8 +318,10 @@ export const projects: Project[] = [
     sheet: {
       src: "/images/projects/food-beverage/herbal-1999/sheet.webp",
       ...SHEET,
-      alt: "Lembar portofolio lengkap berisi label dan kemasan Herbal 1999.",
+      alt: "Lembar portofolio gabungan: label Herbal 1999 di sisi kanan, bersama merchandise dan kemasan klien lain.",
     },
+    sheetNote:
+      "Halaman portofolio asli — label Herbal 1999 ada di sisi kanan; halaman ini juga memuat karya klien lain.",
   },
 ];
 
