@@ -39,9 +39,11 @@ export async function generateMetadata({
       url: `/work/${project.slug}`,
       images: [
         {
-          url: project.cover.src,
-          width: project.cover.width,
-          height: project.cover.height,
+          // Versi 1200x630 di atas latar kertas, dalam JPEG: WebP tidak
+          // selalu dirender oleh pratinjau tautan WhatsApp/LinkedIn.
+          url: `/images/og/${project.slug}.jpg`,
+          width: 1200,
+          height: 630,
           alt: project.cover.alt,
         },
       ],

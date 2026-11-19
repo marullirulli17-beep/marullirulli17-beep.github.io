@@ -51,18 +51,20 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/images/portrait.webp",
-        width: 900,
-        height: 900,
-        alt: `Potret ${site.name}`,
+        // PNG 1200x630: WebP tidak selalu dirender oleh pratinjau tautan
+        // WhatsApp maupun LinkedIn, sedangkan kanal utama situs ini WhatsApp.
+        url: "/images/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.role}`,
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title,
     description: site.description,
-    images: ["/images/portrait.webp"],
+    images: ["/images/og.png"],
   },
   robots: {
     index: true,
