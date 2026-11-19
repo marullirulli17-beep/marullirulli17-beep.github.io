@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Situs ini dibangun sebagai berkas statis lalu dilayani GitHub Pages.
+  output: "export",
+  // GitHub Pages tidak punya optimizer gambar Next.js.
+  images: { unoptimized: true },
+  // Hasilkan /work/slug/index.html supaya URL tanpa ekstensi tetap terbuka.
+  trailingSlash: true,
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
   turbopack: {
     rules: {
       "*.css": {

@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portofolio Muhammad Marulli
 
-## Getting Started
+Portofolio desain grafis Muhammad Marulli — identitas visual, materi promosi,
+konten sosial media, kemasan, dan desain digital.
 
-First, run the development server:
+Situs statis Next.js yang dibangun dengan konsep **Ruang Cetak**: permukaan
+kertas, tinta pekat, dan warna aksen yang diambil langsung dari karya aslinya.
+
+**Live:** <https://marullirulli17-beep.github.io/>
+
+## Menjalankan secara lokal
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # hasil statis ditulis ke ./out
+npm run lint
+npx tsc --noEmit
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Karena `output: "export"` aktif, hasil build berupa berkas statis di `out/`
+tanpa server Node. Untuk memeriksa hasil build apa adanya:
 
-## Learn More
+```bash
+python3 -m http.server 3200 --directory out
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Struktur
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/                 rute App Router (beranda, /work/[slug], 404, sitemap, robots)
+components/          potongan UI (hero, galeri, kartu karya, footer, dsb.)
+lib/projects.ts      data 10 karya terpilih + arsip lainnya
+lib/site.ts          identitas situs, kanal kontak, tautan CV
+public/images/       aset WebP hasil optimasi (cover + sheet per proyek)
+public/documents/    CV dalam PDF
+assets-source/       berkas sumber halaman portofolio (tidak ikut ter-build)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Mengubah konten
 
-## Deploy on Vercel
+- **Karya** — `lib/projects.ts`. Setiap entri memakai `category`, `slug`,
+  `title`, `client`, `summary`, serta dimensi `cover`/`sheet`.
+- **Kontak & CV** — `lib/site.ts`. Kanal yang dibiarkan kosong otomatis
+  disembunyikan, jadi tidak pernah muncul tautan mati.
+- **URL publik** — `.env.production` (`NEXT_PUBLIC_SITE_URL`). Nilai ini dipakai
+  untuk metadata, `sitemap.xml`, dan `robots.txt`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Setiap push ke `main` menjalankan `.github/workflows/deploy.yml`:
+install dependensi → `npm run build` → unggah `out/` → deploy ke GitHub Pages.
+
+Situs harus dilayani dari akar domain, jadi repositori ini bernama
+`marullirulli17-beep.github.io` dan tidak memakai `basePath`.
